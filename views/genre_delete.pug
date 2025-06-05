@@ -6,7 +6,17 @@ block content
 
   if genre_books.length
 
-    p #[strong Delete the following books before attempting to delete this genre.]
+    p #[strong このジャンルを消す前に、これらの本を削除する必要があるのよ]
+      
+    l ふふ……わかったわ。その「ジャンル」を消したいのね。
+
+    l でもね、そのためには、まず、そのジャンルに属している「本」たちを、先にこの世界から消してあげないといけないのよ。
+
+    l だって、宙ぶらりんのまま、行き場をなくした「本」が残ってしまったら、かわいそうでしょう？
+
+    l だから、まずは彼らを片付けてから……そう、削除してからにしましょうね。
+
+
 
     div(style='margin-left:20px;margin-top:20px')
 
@@ -19,10 +29,10 @@ block content
           dd #{book.summary}
 
   else
-    p Do you really want to delete this Genre?
+    p このジャンルを、本当に消してもいいの？
 
     form(method='POST')
       div.form-group
         input#id.form-control(type='hidden', name='id', value=genre._id )
 
-      button.btn.btn-primary(type='submit') Delete
+      button.btn.btn-primary(type='submit') 削除
