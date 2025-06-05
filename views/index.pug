@@ -2,15 +2,22 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #[em LocalLibrary], a very basic Express website developed as a tutorial example on the Mozilla Developer Network.
+  p 図書館サイトへようこそ
+  l  ふふ……あなたは、この図書館サイトにたどり着いたのね。
+  br
+  l  ここはね、ただの文字や情報の羅列じゃないのよ。
+  br
+  l  まるで、たくさんの小さな秘密が、
+  br
+  l  それぞれに閉じ込められている、不思議な箱庭……。
 
-  h1 Dynamic content
-
-  p The library has the following record counts:
+  p 今、この図書館には、これだけの記録があるのよ……
 
   ul
-    li #[strong Books:] !{book_count}
-    li #[strong Copies:] !{book_instance_count}
-    li #[strong Copies available:] !{book_instance_available_count}
-    li #[strong Authors:] !{author_count}
-    li #[strong Genres:] !{genre_count}
+    li #[strong 書籍:] !{book_count}
+    li #[strong 部数:] !{book_instance_count}
+    li #[strong 貸出可能部数:] !{book_instance_available_count}
+    li #[strong 著者:] !{author_count}
+    li #[strong ジャンル:] !{genre_count}
+
+  p ……ね？ 数字だけ見ても、たくさんの物語や知識が、ここに眠っているのがわかるでしょう？

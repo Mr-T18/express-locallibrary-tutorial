@@ -6,7 +6,7 @@ block content
 
   div(style='margin-left:20px;margin-top:20px')
 
-    h2(style='font-size: 1.5rem;') Books
+    h2(style='font-size: 1.5rem;') 書籍
     if genre_books.length
       dl
         each book in genre_books
@@ -14,10 +14,11 @@ block content
             a(href=book.url) #{book.title}
           dd #{book.summary}
     else
-      p This genre has no books.
+      p このジャンルには、本がないのね
+
 
   hr
   p
-    a(href=genre.url+'/delete') Delete genre
+    a(href=genre.url+'/delete') ジャンルを、『消す』の……？
   p
-    a(href=genre.url+'/update') Update genre
+    a(href=genre.url+'/update') ジャンルを、『更新する』のね……？
