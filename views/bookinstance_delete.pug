@@ -16,14 +16,14 @@ block content
     p #[strong 出版事項:] #{bookinstance.imprint}
 
     p #[strong ステータス: ]
-      if bookinstance.status=='利用可能'
+      if bookinstance.status=='利用可能' || bookinstance.status=='Available'
         span.text-success #{bookinstance.status}
-      else if bookinstance.status=='メンテナンス中'
+      else if bookinstance.status=='メンテナンス中' || bookinstance.status=='Maintenance'
         span.text-danger #{bookinstance.status}
       else
         span.text-warning #{bookinstance.status}
 
-    if bookinstance.status!='利用可能'
+    if bookinstance.status!='利用可能' && bookinstance.status!='Available'
       p #[strong Due back:] #{bookinstance.due_back_formatted}
 
   form(method='POST')

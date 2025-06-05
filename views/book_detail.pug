@@ -18,14 +18,14 @@ block content
 
     each val in book_instances
       hr
-      if val.status=='利用可能'
+      if val.status=='利用可能' || val.status == 'Available'
         p.text-success #{val.status}
-      else if val.status=='メンテナンス中'
+      else if val.status=='メンテナンス中' || val.status == 'Maintenance'
         p.text-danger #{val.status}
       else
         p.text-warning #{val.status}
       p #[strong 出版事項:] #{val.imprint}
-      if val.status!='利用可能'
+      if val.status!='利用可能' && val.status != 'Available'
         p #[strong 返却日:] #{val.due_back}
       p #[strong ID: ]
         a(href=val.url) #{val._id}
