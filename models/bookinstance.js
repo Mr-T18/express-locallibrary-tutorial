@@ -9,8 +9,8 @@ const BookInstanceSchema = new Schema({
   status: {
     type: String,
     required: true,
-    enum: ["Available", "Maintenance", "Loaned", "Reserved"],
-    default: "Maintenance",
+    enum: ["利用可能", "メンテナンス中", "貸し出し中", "予約済み"],
+    default: "メンテナンス中",
   },
   due_back: { type: Date, default: Date.now },
 });
