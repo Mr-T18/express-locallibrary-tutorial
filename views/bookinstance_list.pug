@@ -8,14 +8,14 @@ block content
       each val in bookinstance_list
         li
           a(href=val.url) #{val.book.title} : #{val.imprint} -&nbsp;
-          if val.status=='Available'
+          if val.status=='利用可能'
             span.text-success #{val.status}
-          else if val.status=='Maintenance'
+          else if val.status=='メンテナンス中'
             span.text-danger #{val.status}
           else
             span.text-warning #{val.status}
-          if val.status!='Available'
-            span  (Due: #{val.due_back_formatted})
+          if val.status!='利用可能'
+            span  (返却予定日: #{val.due_back_formatted})
 
   else
-    p There are no book copies in this library.
+    p この図書館には、本のコピーがないのね．

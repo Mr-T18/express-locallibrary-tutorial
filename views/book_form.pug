@@ -5,12 +5,12 @@ block content
 
   form(method='POST')
     div.form-group
-      label(for='title') Title:
+      label(for='title') タイトル:
       input#title.form-control(type='text', placeholder='Name of book' name='title' required value=(undefined===book ? '' : book.title) )
     div.form-group
-      label(for='author') Author:
+      label(for='author') 著者:
       select#author.form-control(name='author' required)
-        option(value='') --Please select an author--
+        option(value='') --著者を選びなさい！--
         for author in authors
           if book
             if author._id.toString()===book.author._id.toString()
@@ -20,7 +20,7 @@ block content
           else
             option(value=author._id) #{author.name}
     div.form-group
-      label(for='summary') Summary:
+      label(for='summary') 要約:
       textarea#summary.form-control(placeholder='Summary' name='summary' required)= undefined===book ? '' : book.summary
     div.form-group
       label(for='isbn') ISBN:
@@ -35,7 +35,7 @@ block content
             else
               input.checkbox-input(type='checkbox', name='genre', id=genre._id, value=genre._id)
             label(for=genre._id) &nbsp;#{genre.name}
-    button.btn.btn-primary(type='submit') Submit
+    button.btn.btn-primary(type='submit') 決定
 
   if errors
     ul
