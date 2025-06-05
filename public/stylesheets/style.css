@@ -1,5 +1,131 @@
-.sidebar-nav {
-  margin-top: 20px;
-  padding: 0;
-  list-style: none;
+/* public/stylesheets/style.css */
+
+/* Basic styling for the sidebar wrapper (div.col-sm-2 sidebar-wrapper) */
+.sidebar-wrapper {
+    width: 200px; /* デフォルトのサイドバー幅 */
+    flex: 0 0 200px; /* Flexboxでの幅固定 */
+    max-width: 200px; /* 最大幅 */
+    transition: all 0.3s ease-in-out; /* スムーズなアニメーション */
+
+    /* sidebar-wrapper自体を画面に固定 */
+    position: fixed; /* これがボタンのabsoluteの基準になる */
+    left: 0;
+    top: 0;
+    height: 100vh; /* ビューポートの高さ全体 */
+    overflow-x: hidden; /* 横方向のはみ出しを隠す */
+    z-index: 100; /* 他のコンテンツの上に表示 */
+    border-right: 1px solid #e9ecef; /* 右側の薄いボーダー */
+
+    padding-top: 50px; /* サイドバー内部のコンテンツがボタンと重ならないように */
+    background-color: #f8f9fa; /* デフォルトの背景色 */
 }
+
+/* Styles for when the sidebar wrapper is closed */
+.sidebar-wrapper.collapsed {
+    width: 60px !important; /* !important で優先度を強制的に上げる */
+    flex: 0 0 60px !important; /* !important で優先度を強制的に上げる */
+    max-width: 60px !important; /* !important で優先度を強制的に上げる */
+}
+
+/* Sidebar Navigation (ul.sidebar-nav) styling - 親要素の幅に追従させる */
+.sidebar-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%; /* 親要素(sidebar-wrapper)の幅に合わせる */
+    height: 100%; /* 親要素の高さに合わせる */
+    transition: 0.3s; /* ul自体のトランジションが必要なら残す */
+}
+
+/* Styles for individual list items and links */
+.sidebar-nav li {
+    padding: 8px 10px;
+    transition: padding 0.3s ease-in-out, opacity 0.3s ease-in-out; /* liのパディングと透明度のアニメーション */
+}
+
+.sidebar-nav a {
+    text-decoration: none;
+    color: #495057;
+    display: block;
+    padding: 8px 15px;
+    border-radius: 5px;
+    white-space: nowrap; /* これが重要！テキストの折り返しを防ぐ */
+    transition: padding 0.3s ease-in-out, opacity 0.3s ease-in-out; /* aタグのパディングと透明度のアニメーション */
+}
+
+.sidebar-nav a:hover {
+    background-color: #e2e6ea;
+    color: #007bff;
+}
+
+/* Horizontal rule styling */
+.sidebar-nav hr {
+    border: 0;
+    height: 1px;
+    background-color: #ddd;
+    margin: 15px 0;
+    width: 100%; /* 親要素の幅に合わせる */
+}
+
+/* --- サイドバーが閉じたときの項目（テキスト）の非表示と位置調整 --- */
+
+/* サイドバーが閉じたらリストアイテムのパディングと透明度を調整 */
+.sidebar-wrapper.collapsed .sidebar-nav li {
+    padding: 8px 0; /* 上下は残し、左右のパディングをゼロに（アイコンがあれば中央に） */
+    text-align: center; /* テキストやアイコンを中央揃え */
+}
+
+/* サイドバーが閉じたらaタグ内のテキストを非表示にする */
+.sidebar-wrapper.collapsed .sidebar-nav a {
+    opacity: 0; /* フェードアウト */
+    visibility: hidden; /* 非表示領域を占めないように */
+    padding: 8px 0; /* アイコンを中央に寄せるためのパディング */
+    width: 100%; /* 親要素の幅に合わせる */
+    text-align: center;
+}
+.sidebar-wrapper.collapsed .sidebar-nav a span {
+    display: none; /* 完全に消す */
+}
+
+
+/* Style for the toggle button (内部配置版 - 左寄せ) */
+.sidebar-toggle-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px; /* ★ここを left: 10px; に変更 */
+    z-index: 1000;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: left 0.3s ease-in-out; /* leftプロパティのアニメーション */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Adjust button position when sidebar is collapsed */
+.sidebar-wrapper.collapsed .sidebar-toggle-btn {
+    left: 5px; /* ★サイドバーが閉じたときに、より左端に寄せる */
+    transform: translateX(0); /* 中央寄せのためのtransformをリセット */
+    padding: 8px 10px; /* 閉じたときに少し小さくする */
+}
+
+
+/* メインコンテンツ（col-sm-10 content-wrapper）をサイドバーの幅に応じて調整する */
+.content-wrapper {
+    margin-left: 200px; /* デフォルトのサイドバー幅に合わせて */
+    transition: margin-left 0.3s ease-in-out;
+}
+
+.content-wrapper.collapsed-margin {
+    margin-left: 60px; /* サイドバーが閉じたら狭い幅に */
+}
+
+/* 不要なルールは削除またはコメントアウト */
+/*
+.sidebar-nav.collapsed ~ .col-sm-10 { margin-left: 60px; }
+.col-sm-2 { width: 16.666667%; transition: width 0.3s; }
+.col-sm-2 + .col-sm-10 { margin-left: 0; transition: margin-left 0.3s; }
+.container-fluid > .row > .col-sm-10 { margin-left: 200px; transition: margin-left 0.3s; }
+*/
